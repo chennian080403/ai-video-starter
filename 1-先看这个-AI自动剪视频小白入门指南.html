@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 自动剪视频免费三件套 · 小白入门指南</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --card: #ffffff;
+    --text: #1f2329;
+    --muted: #646a73;
+    --border: #e5e6eb;
+    --accent: #ff7a00;
+    --accent-soft: #fff4e8;
+    --blue-soft: #eef5ff;
+    --blue: #165dff;
+    --green-soft: #eafaf1;
+    --green: #009a44;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 20px 16px 56px;
+  }
+  .hero {
+    background: linear-gradient(135deg, #1b2234 0%, #2a3550 100%);
+    color: #fff;
+    border-radius: 18px;
+    padding: 26px 22px;
+    margin-bottom: 18px;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(255, 122, 0, 0.2);
+    color: #ffb066;
+    border: 1px solid rgba(255, 122, 0, 0.45);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .hero p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 15px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 18px;
+    margin-bottom: 16px;
+  }
+  .card h2 {
+    margin: 0 0 12px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tag-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .lead {
+    margin: 0 0 12px;
+    font-size: 15px;
+  }
+  .rule-box {
+    background: var(--accent-soft);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .mini {
+    background: #fafbfc;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 12px;
+  }
+  .mini .k {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .mini h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+  }
+  .mini p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .prep-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .prep-list li {
+    background: #fafbfc;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 14px;
+    font-size: 14px;
+  }
+  .prep-list strong {
+    color: var(--text);
+  }
+  .step {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 14px;
+    margin-bottom: 14px;
+    background: #fff;
+  }
+  .step:last-child { margin-bottom: 0; }
+  .step-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .step-head h3 {
+    margin: 0;
+    font-size: 16px;
+  }
+  .step p {
+    margin: 6px 0;
+    font-size: 14px;
+  }
+  .wait-pill {
+    display: inline-block;
+    background: var(--blue-soft);
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 6px;
+    margin-top: 6px;
+  }
+  .ok-pill {
+    display: inline-block;
+    background: var(--green-soft);
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 6px;
+    margin-top: 6px;
+  }
+  .prompt-box {
+    background: #171c26;
+    color: #f2f4f8;
+    border-radius: 10px;
+    padding: 14px;
+    margin: 10px 0 6px;
+    font-size: 14px;
+    line-height: 1.6;
+    word-break: break-word;
+  }
+  .copy-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .btn-copy {
+    appearance: none;
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .btn-copy:active { opacity: 0.85; }
+  .copy-tip {
+    font-size: 12px;
+    color: #a8b3c7;
+  }
+  .svg-wrap {
+    margin: 12px 0 4px;
+    border: 1px dashed #d5dae2;
+    border-radius: 12px;
+    background: #fcfcfd;
+    padding: 10px;
+    overflow: hidden;
+  }
+  .svg-wrap svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .svg-cap {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  .faq-item {
+    border-top: 1px solid var(--border);
+    padding: 12px 0;
+  }
+  .faq-item:first-of-type {
+    border-top: none;
+    padding-top: 2px;
+  }
+  .faq-q {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .faq-a {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+  }
+  .footer-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 20px;
+    padding: 0 8px;
+  }
+  @media (max-width: 640px) {
+    .grid-3 { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 21px; }
+    .card { padding: 16px 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <section class="hero">
+    <span class="badge">开源免费 · 零代码入门包</span>
+    <h1>AI 自动剪视频免费三件套</h1>
+    <p>不用自己学命令、不用买剪辑会员。把这份压缩包直接丢给你自己的 AI，让它帮你装好三个免费工具，自动剪掉口误停顿、加上字幕和弹出动效，直接导出成片。</p>
+  </section>
+
+  <!-- 1. 这是什么 -->
+  <section class="card">
+    <h2><span class="tag-num">1</span>这是什么？能帮你干嘛？</h2>
+    <p class="lead">这是一套<strong>「喂给你的 AI 就能自动干活」</strong>的入门工具包。平时录完一条 3~5 分钟的口播视频，自己剪口误、加字幕、做文字弹出动效要折腾一两个小时；用这套方法，你只需要动嘴派活和看结果，脏活累活全交给电脑里的 AI 跑。</p>
+    <div class="rule-box">
+      <strong>最重要的一句话：</strong>你<strong>不需要</strong>看懂代码，也<strong>不需要</strong>自己去解压、敲命令、装软件。你唯一要做的，就是把本压缩包里的 <strong>2 号文档</strong> 丢给你的 AI，照抄下面的一句话发给它。
+    </div>
+  </section>
+
+  <!-- 2. 原理 -->
+  <section class="card">
+    <h2><span class="tag-num">2</span>核心原理：为什么全免费也能剪？</h2>
+    <p class="lead">AI 剪视频其实只干三件事，分别对应三个业内成熟的免费开源工具：</p>
+    <div class="grid-3">
+      <div class="mini">
+        <div class="k">工具 1 · 听声音</div>
+        <h3>Whisper / SenseVoice</h3>
+        <p>装在你自己电脑上的本地语音模型，免费把口播转成带精准时间点的逐字稿，不花接口钱。</p>
+      </div>
+      <div class="mini">
+        <div class="k">工具 2 · 剪口误</div>
+        <h3>FFmpeg</h3>
+        <p>AI 看懂文字稿里哪句说错了、重录了、停顿太长，按时间点精准咔嚓剪掉并平滑拼接。</p>
+      </div>
+      <div class="mini">
+        <div class="k">工具 3 · 加动效</div>
+        <h3>HyperFrames</h3>
+        <p>用网页代码自动生成字幕、开头弹出大字、侧边要点卡片，和原片合成最终 MP4。</p>
+      </div>
+    </div>
+
+    <div class="svg-wrap" aria-label="流程示意图">
+      <svg viewBox="0 0 760 150" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="34" width="150" height="76" rx="12" fill="#fff4e8" stroke="#ff7a00" stroke-width="2"/>
+        <text x="85" y="66" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2329">你丢给 AI</text>
+        <text x="85" y="88" text-anchor="middle" font-size="12" fill="#646a73">2号文档 + 一段口播</text>
+
+        <path d="M164 72 L196 72" stroke="#ff7a00" stroke-width="2.5" fill="none"/>
+        <polygon points="196,67 206,72 196,77" fill="#ff7a00"/>
+
+        <rect x="210" y="34" width="155" height="76" rx="12" fill="#eef5ff" stroke="#165dff" stroke-width="1.8"/>
+        <text x="287" y="66" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2329">AI 自动装环境</text>
+        <text x="287" y="88" text-anchor="middle" font-size="12" fill="#646a73">转写 + FFmpeg + 动效</text>
+
+        <path d="M369 72 L401 72" stroke="#165dff" stroke-width="2.5" fill="none"/>
+        <polygon points="401,67 411,72 401,77" fill="#165dff"/>
+
+        <rect x="415" y="34" width="150" height="76" rx="12" fill="#f7f8fa" stroke="#86909c" stroke-width="1.8"/>
+        <text x="490" y="66" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2329">你拍板确认</text>
+        <text x="490" y="88" text-anchor="middle" font-size="12" fill="#646a73">删哪些口误 / 看效果</text>
+
+        <path d="M569 72 L601 72" stroke="#009a44" stroke-width="2.5" fill="none"/>
+        <polygon points="601,67 611,72 601,77" fill="#009a44"/>
+
+        <rect x="615" y="34" width="135" height="76" rx="12" fill="#eafaf1" stroke="#009a44" stroke-width="2"/>
+        <text x="682" y="66" text-anchor="middle" font-size="14" font-weight="700" fill="#009a44">导出成片</text>
+        <text x="682" y="88" text-anchor="middle" font-size="12" fill="#646a73">带字幕与动效 MP4</text>
+
+        <circle cx="24" cy="34" r="11" fill="#ff7a00"/>
+        <text x="24" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">1</text>
+        <circle cx="224" cy="34" r="11" fill="#ff7a00"/>
+        <text x="224" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">2</text>
+        <circle cx="429" cy="34" r="11" fill="#ff7a00"/>
+        <text x="429" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">3</text>
+      </svg>
+      <div class="svg-cap">示意图：你只管开头派活和中间拍板，其余全由 AI 自动完成</div>
+    </div>
+  </section>
+
+  <!-- 3. 准备什么 -->
+  <section class="card">
+    <h2><span class="tag-num">3</span>开始前，你只需要准备这 3 样</h2>
+    <ul class="prep-list">
+      <li><strong>一台电脑（Mac 或 Windows 都可以）</strong>：留出 3~5 GB 硬盘空间，用来存放本地语音模型和视频文件。</li>
+      <li><strong>一个能操作你电脑文件的 AI 助手</strong>：例如 Claude Code / Claude 桌面版、Cursor、WorkBuddy、DeepSeek 代理、Pi 等（注意：普通只能纯聊天的网页版无法帮你装软件，需要能读写文件和跑终端的 AI）。</li>
+      <li><strong>一段 30 秒左右的测试口播视频（MP4）</strong>：哪怕用手机随手录 15 秒、故意说错一两句话，用来验收剪辑效果最直观。</li>
+    </ul>
+  </section>
+
+  <!-- 4. 分步带做 -->
+  <section class="card">
+    <h2><span class="tag-num">4</span>三步上手（跟着做就行）</h2>
+
+    <div class="step">
+      <div class="step-head">
+        <span class="tag-num">1</span>
+        <h3>把 2 号文档丢给你的 AI，发这句话</h3>
+      </div>
+      <p>打开你电脑上的 AI 助手，把压缩包里的 <strong><code>2-发给你的AI-让它帮你装好并剪出第一条片.md</code></strong> 拖进对话框（或直接把整个压缩包丢给它），然后复制下面这段话发出去：</p>
+      <div class="prompt-box" id="promptText">请严格按照这份文档（2-发给你的AI-让它帮你装好并剪出第一条片.md）的步骤，先检查我的电脑环境，然后全权帮我安装好免费的 AI 剪视频三件套（本地转写、FFmpeg、HyperFrames）。装好后告诉我，我发你一段测试视频一起跑通第一条成片。</div>
+      <div class="copy-row">
+        <button class="btn-copy" type="button" onclick="copyPrompt()">一键复制给 AI 的话</button>
+        <span class="copy-tip" id="copyStatus">点一下即可复制</span>
+      </div>
+      <span class="wait-pill">AI 停下来等你时：如果电脑弹出权限确认或软件安装授权框，点一下「允许」即可</span>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <span class="tag-num">2</span>
+        <h3>发一段测试视频，确认要删哪些口误</h3>
+      </div>
+      <p>等 AI 汇报「三件套已经装好」后，把你的测试口播 MP4 拖进对话框，让它开始剪。AI 会先免费转出带编号的文字稿，并把说错的话、重复句和长停顿标出来给你看。</p>
+      <span class="wait-pill">AI 停下来等你时：扫一眼文字稿，回复「按你的建议删」或补充你想保留的句子</span>
+    </div>
+
+    <div class="step">
+      <div class="step-head">
+        <span class="tag-num">3</span>
+        <h3>看关键帧预览，满意就让它导出成片</h3>
+      </div>
+      <p>AI 剪完口误后，会自动用 HyperFrames 加上底部字幕、开头弹出大字和侧边卡片，并截几张关键帧图片给你看。</p>
+      <span class="ok-pill">做完应该看到：你电脑里多出一个可直接播放的「最终成片.mp4」，口误已去掉、字幕和动效都对齐</span>
+    </div>
+  </section>
+
+  <!-- 5. 卡住了怎么办 -->
+  <section class="card">
+    <h2><span class="tag-num">5</span>最容易卡住的 3 个地方</h2>
+    <div class="faq-item">
+      <div class="faq-q">Q1：下载语音模型很慢，或者半天不动了？</div>
+      <p class="faq-a">别慌，直接跟你的 AI 说：「下载太慢了，请按 2 号文档里的国内镜像方式重新下」。2 号文档里已经把国内加速地址写好了，AI 会自己切过去。</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q2：AI 说「无法操作你的电脑 / 没有终端权限」？</div>
+      <p class="faq-a">说明你打开的是纯网页聊天窗口。换成一个能读写本机文件的 AI 桌面端/编程助手（如 Claude 桌面版、Cursor、WorkBuddy 等）再把 2 号文档发给它即可。</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q3：中文字幕渲染出来变成方块，或者声音有点卡？</div>
+      <p class="faq-a">直接把报错或截图发给 AI，提醒它：「对照 2 号文档第 5 节的踩坑表检查一下中文字体和关键帧设置」，它会自己修好再重新导出。</p>
+    </div>
+  </section>
+
+  <div class="footer-note">
+    本入门包完全开源免费，适合日常 3~5 分钟口播视频入门上手。<br>
+    跑通后可以把你的偏好让 AI 写成专属规则，以后一条口播发过去就能自动出片。
+  </div>
+
+</div>
+
+<script>
+function copyPrompt() {
+  var el = document.getElementById('promptText');
+  var status = document.getElementById('copyStatus');
+  var text = el.innerText || el.textContent;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      status.textContent = '已复制，直接粘贴发给你的 AI 吧';
+      status.style.color = '#009a44';
+    }).catch(function() {
+      fallbackCopy(text, status);
+    });
+  } else {
+    fallbackCopy(text, status);
+  }
+}
+function fallbackCopy(text, status) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand('copy');
+    status.textContent = '已复制，直接粘贴发给你的 AI 吧';
+    status.style.color = '#009a44';
+  } catch (e) {
+    status.textContent = '请手动选中上方黑框里的文字复制';
+  }
+  document.body.removeChild(ta);
+}
+</script>
+</body>
+</html>
